@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+
+
+</head>
+<body>
+
+<style type="text/css">
+.custab{
+    width: 1400px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    position: absolute;
+
+    }
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+    }
+
+    .section{
+        background-color: #fbfbf4 ;
+        border-style: ridge;
+        border-width: 1px;
+        border-color: #fbfbf4 ;
+        border-radius: 10px;
+
+        position: relative;
+        margin-top: 10%;
+
+
+
+          }
+
+.modal-header,  .close {
+    background-color: #2c75ff;
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+  }
+  .modal-footer {
+    background-color: #f9f9f9;
+  }
+  h5{
+    font-size: 10px;
+  }
+
+</style>
+
+<div class="container">
+
+    <section class="section">
+        
+
+      <div class="row col-md-12 col-md-offset-2 custyle">
+    <table class="table table-striped custab">
+    <thead>
+    <button  class="btn btn-primary btn-xs pull-right btn-lg addBtn" type="button"><b>+</b> Ajouter un nouveau contact</button>
+        <tr>
+            <th>Contact</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody id="table-content">
+        
+    </tbody>
+          
+                  </table>
+    </div>
+</div>
+
+
+  <!-- Add Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <h4>Ajouter un contact</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="name">Nom  <h5  class="text-danger" id="name-label"></h5></label>
+              <input type="text" class="form-control" id="name" placeholder="Entrez le nom">
+            </div>
+            <div class="form-group">
+              <label for="price">Prenom<h5  class="text-danger" id="price-label"></h5></label>
+              <input type="text" class="form-control" id="surname" placeholder="Entrez le Prenom">
+            </div>
+                        <div class="form-group">
+              <label for="price">Code Postal<h5  class="text-danger" id="price-label"></h5></label>
+              <input type="text" class="form-control" id="postalCode" placeholder="Entrez le Code Postal ">
+            </div>
+                        <div class="form-group">
+              <label for="price">Numéro<h5  class="text-danger" id="price-label"></h5></label>
+              <input type="text" class="form-control" id="phone" placeholder="Entrez le Numéro">
+            </div>
+                        <div class="form-group">
+              <label for="price">Email<h5  class="text-danger" id="price-label"></h5></label>
+              <input type="text" class="form-control" id="email" placeholder="Entrez l'adresse email">
+            </div>
+              <button type="button" class="btn btn-success btn-block" id="submit">Enregistrer</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+
+
+
+  <!-- Edit Modal -->
+  <div class="modal fade editModal" id="editModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <h4>Mdifier une adresse</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="name">Nom  <h5  class="text-danger" id="name-label"></h5></label>
+              <input type="text" class="form-control" id="ename" placeholder="Entrez le nom">
+            </div>
+            <div class="form-group">
+              <label for="price">Prenom<h5  class="text-danger" id="price-label"></h5></label>
+              <input type="text" class="form-control" id="esurname" placeholder="Entrez le Prenom">
+            </div>
+                        <div class="form-group">
+              <label for="price">Code Postal<h5  class="text-danger" id="price-label"></h5></label>
+              <input type="text" class="form-control" id="epostalCode" placeholder="Entrez le Code Postal ">
+            </div>
+                        <div class="form-group">
+              <label for="price">Numéro<h5  class="text-danger" id="price-label"></h5></label>
+              <input type="text" class="form-control" id="ephone" placeholder="Entrez le Numéro">
+            </div>
+                        <div class="form-group">
+              <label for="price">Email<h5  class="text-danger" id="price-label"></h5></label>
+              <input type="text" class="form-control" id="eemail" placeholder="Entrez l'adresse email">
+            </div>
+              <button type="button" class="btn btn-success btn-block" id="submit1">Enregistrer</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+
+    <!-- Add Modal -->
+  <div class="modal fade" id="infModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <h4>Détails</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+  <div class="container-fluid well span6">
+  <div class="row-fluid">
+        <div class="span2" >
+        <img src="user-circle-regular.svg" class="img-circle"  height="111" width="123">
+        </div>
+        
+        <div class="span8">
+            <h3 id="username"></h3>
+            <h6 id="useremail"></h6>
+            <h6 id="userpc"></h6>
+            <h6 id="userphone"></h6>
+        </div>
+<button type="button" class="btn btn-success editBtn">Modifier</button>
+<button type="button" class="btn btn-warning delBtn">Supprimer</button>
+
+</div>
+</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+  <!-- Delete Modal -->
+  <div class="modal fade delModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+
+                <div class="p-3 mb-2 bg-danger text-white modal-header " style="padding:35px 50px;">
+          <h4>Supprimer cet article</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+              <button type="button" class="btn btn-danger btn-block delete">Supprimer</button>
+       </div>
+      </div>
+      
+    </div>
+  </div> 
+
+
+ 
+<script>
+      
+$(document).ready(function(){
+
+function loadData(){
+   $.ajax({
+                url:"http://localhost:3000/api/adress",
+                method:"GET",
+                data:{},
+                success:function(data)
+                {
+             var table ='';
+
+     
+            data.forEach(function(item, index, array) {
+                                    table += ' <tr><td>'+index+'</td><td>'+item.name+'</td> <td>'+item.surname+'</td><td class="text-center"><button class="btn btn-info btn-xs detailBtn "  id = "'+item._id+'"  ><i class="fas fa-info-circle "></i></button></td></tr>';
+
+                  
+                    
+
+            });
+                $("#table-content").html(table);
+
+            load_actions();
+              localStorage.setItem("adress", JSON.stringify(data));
+                },
+                error : function(e) {
+        $("#getResultDiv").html("Error");
+        console.log("ERROR: ", e);
+      }
+            });
+
+
+
+}
+
+loadData();
+
+function load_actions() {
+
+  console.log("loaderd");
+ $(".detailBtn").click(function(){ 
+
+  id = $(this).attr("id");
+
+ array = JSON.parse(localStorage.getItem('adress'));
+
+
+      array.forEach(function(item, index, array) {
+                              if (item._id==id) {
+                                    
+                                $("#username").html(item.name+" "+item.surname);
+                                $("#useremail").html(item.email);
+                                $("#userpc").html(item.postalCode);
+                                $("#userphone").html(item.phone);
+                                $("#ename").val(item.name);
+                                $("#esurname").val(item.surname);
+                                $("#eemail").val(item.email);
+                                $("#epostalCode").val(item.postalCode);
+                                $("#ephone").val(item.phone);
+
+                              return;
+                              }
+                    
+
+            });
+
+    $("#infModal").modal();
+
+     });
+
+
+        $(".delBtn").click(function(){
+
+                   $("#infModal").modal("hide");
+    $(".delModal").modal();
+
+   $(".delete").click(function() {
+
+            $.ajax({
+                url:"http://localhost:3000/api/adress/"+id,
+                contentType : "application/json",
+                method:"DELETE",
+                data:{},
+                success:function(data)
+                {
+                  console.log(data);
+                  $(".delModal").modal('hide');
+                   loadData();
+ 
+                },
+                error : function(e) {
+                 
+
+      }
+            });
+       
+    });
+  });
+
+
+                $(".editBtn").click(function(){
+ console.log("on est le");
+
+                   $("#infModal").modal("hide");
+
+     
+    $(".editModal").modal();
+
+
+
+   $("#submit1").click(function(){
+    console.log("on est le");
+        var formData = {
+        name : $("#ename").val(),
+        surname :  $("#esurname").val(),
+        email : $("#eemail").val(),
+        postalCode :  $("#epostalCode").val(),
+        phone:  $("#ephone").val(),
+        }
+
+        $.ajax({
+                url:"http://localhost:3000/api/adress/"+id,
+                contentType : "application/json",
+                method:"PUT",
+                data:JSON.stringify(formData),
+                success:function(data)
+                {
+                  console.log(data);
+                  $(".editModal").modal('hide');
+                   loadData();
+                 
+ 
+                },
+                error : function(e) {
+                  alert(e);
+
+      }
+            });
+
+
+            
+
+
+
+
+      });
+
+  });
+ 
+   $(".addBtn").click(function(){
+    $("#myModal").modal();
+  });
+
+
+
+
+
+}
+      
+ 
+   
+
+  
+
+
+
+
+
+
+      $("#submit").click(function(){
+
+        var formData = {
+        name : $("#name").val(),
+        surname :  $("#surname").val(),
+        email : $("#email").val(),
+        postalCode :  $("#postalCode").val(),
+        phone:  $("#phone").val(),
+        }
+        $.ajax({
+                url:"http://localhost:3000/api/adress",
+                contentType : "application/json",
+                method:"POST",
+                data:JSON.stringify(formData),
+                success:function(data)
+                {
+                  console.log(data);
+                  alert("adresse  ajouté");
+                   $("#myModal").modal('hide');
+                   loadData();
+ 
+                },
+                error : function(e) {
+                  alert(e);
+
+      }
+            });
+
+      });
+});
+
+</script>
+
+ </section>
+</body>
+</html>
+
+
